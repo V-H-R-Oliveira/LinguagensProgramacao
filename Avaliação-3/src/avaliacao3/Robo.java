@@ -4,7 +4,7 @@ import java.util.concurrent.RecursiveTask;
 
 /**
  *
- * @author cc49658458890
+ * @author Vitor Oliveira
  */
 
 public class Robo extends RecursiveTask<Integer> {
@@ -21,8 +21,6 @@ public class Robo extends RecursiveTask<Integer> {
     
     public int lengthPath(int x, int y)
     {
-        System.out.println("Entrou na função...");
-        System.out.println("Possíveis caminhos: " + x + " " + y );
         if(x == 0 && y == 0) return 0;
         if(x == 0 || y == 0) return 1;
         return (lengthPath(x - 1, y) + lengthPath(x, y - 1));
@@ -36,7 +34,6 @@ public class Robo extends RecursiveTask<Integer> {
         }else {
             Robo r = new Robo(x, y);
             Robo r2 = new Robo(y, x);
-            System.out.println("Processando");
             r.fork();
             r2.fork();
             r.join();

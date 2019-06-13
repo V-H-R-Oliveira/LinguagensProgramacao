@@ -2,7 +2,7 @@ package avaliacao3;
 
 /**
  *
- * @author cc49658458890
+ * @author Vitor Oliveira
  */
 
 public class Avaliacao3 {
