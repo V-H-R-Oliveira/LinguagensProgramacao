@@ -12,8 +12,7 @@ public class Avaliacao3 {
      */
     
     public static void main(String[] args) {
-        Robo r = new Robo(1,2);
+        Robo r = new Robo(10,20, false);
         System.out.println(r.compute());
     }
-    
 }

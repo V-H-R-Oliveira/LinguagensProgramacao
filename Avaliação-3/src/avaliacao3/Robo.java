@@ -11,12 +11,14 @@ public class Robo extends RecursiveTask<Integer> {
     private int x;
     private int y;
     private Integer resultado;
+    private boolean flag;
     
-    public Robo(int ponto, int ponto2)
+    public Robo(int ponto, int ponto2, boolean flag)
     {
         this.x = ponto;
         this.y = ponto2;
-        resultado = 0;
+        this.resultado = 0;
+        this.flag = flag;
     }
     
     public int lengthPath(int x, int y)
@@ -28,17 +30,15 @@ public class Robo extends RecursiveTask<Integer> {
 
     @Override
     protected Integer compute() {
-        if(this.x == 0 && this.y == 0) return resultado;
-        else if(this.x > 0 || this.y > 0) {
-            resultado += lengthPath(x, y);
-        }else {
-            Robo r = new Robo(x, y);
-            Robo r2 = new Robo(y, x);
+        if(flag == false)
+        {
+            Robo r = new Robo(x-1, y, true);
+            Robo r2 = new Robo(x, y-1, true);
             r.fork();
             r2.fork();
-            r.join();
-            r2.join();
-        }
+            resultado += r.join();
+            resultado += r2.join();
+        }else resultado = lengthPath(x, y);
         return resultado;
     }
 }
